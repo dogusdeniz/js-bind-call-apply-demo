@@ -57,7 +57,7 @@ function greet(greeting) {
 }
 
 const user = { surname: "Jane" };
-console.log(greet.call(user, "Hello"));  // "Hello, Jane"
+console.log(greet.call(user, "Hello"));  // "Hello, John Doe"
         </code></pre>
         <button onclick="runCallExample()">Show Result</button>
         <div class="output" id="call-output"></div>
@@ -101,7 +101,7 @@ console.log(greet.apply({ surname: "Doe" }, ["Hello", "goodbye"]));  // "Hello, 
 
             const user = { surname: "Doe" };
 
-            document.getElementById("call-output").textContent = greet.call(user, "Hello"); // Hello, Jane
+            document.getElementById("call-output").textContent = greet.call(user, "Hello"); // Hello, John Doe
         }
 
         // JavaScript code for apply example
