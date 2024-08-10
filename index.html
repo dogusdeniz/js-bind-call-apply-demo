@@ -40,7 +40,7 @@ function greet(greeting) {
 }
 
 const greet1 = greet.bind({surname: "Doe"}, "Hello");
-console.log(greet1());  // undefined
+console.log(greet1());  // "Hello, John Doe"
         </code></pre>
         <button onclick="runBindExample()">Show Result</button>
         <div class="output" id="bind-output"></div>
@@ -73,7 +73,7 @@ function greet(greeting, ending) {
     return greeting + ", " + "John" + " " + this.surname + " " + ending;
 }
 
-console.log(greet.apply({ surname: "Doe" }, ["Hello", "goodbye"]));  // 10
+console.log(greet.apply({ surname: "Doe" }, ["Hello", "goodbye"]));  // "Hello, John Doe goodbye"
         </code></pre>
         <button onclick="runApplyExample()">Show Result</button>
         <div class="output" id="apply-output"></div>
