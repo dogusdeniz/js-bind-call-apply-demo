@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript bind, call, apply Examples</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <style>
+        .example {
+            margin-bottom: 20px;
+        }
+
+        .output {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #f9f9f9;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>JavaScript bind, call, apply Examples</h1>
+
+    <!-- bind Example -->
+    <div class="example" id="bind-example">
+        <h2>1. bind Example</h2>
+        <p>The bind example is used to bind the context (this value) of a function to a specific object.</p>
+        <pre><code class="javascript">
+// bind example code will go here
+function greet(greeting) {
+    return greeting + ", " + "John" + " " + this.surname;
+}
+
+const greet1 = greet.bind({surname: "Doe"}, "Hello");
+console.log(greet1());  // undefined
+        </code></pre>
+        <button onclick="runBindExample()">Show Result</button>
+        <div class="output" id="bind-output"></div>
+    </div>
+
+    <!-- call Example -->
+    <div class="example" id="call-example">
+        <h2>2. call Example</h2>
+        <p>The call example is used to invoke a function on a specific object.</p>
+        <pre><code class="javascript">
+// call example code will go here
+function greet(greeting) {
+    return greeting + ", " + "John" + " " + this.surname;
+}
+
+const user = { surname: "Jane" };
+console.log(greet.call(user, "Hello"));  // "Hello, Jane"
+        </code></pre>
+        <button onclick="runCallExample()">Show Result</button>
+        <div class="output" id="call-output"></div>
+    </div>
+
+    <!-- apply Example -->
+    <div class="example" id="apply-example">
+        <h2>3. apply Example</h2>
+        <p>The apply example is used to invoke a function on a specific object and takes arguments as an array.</p>
+        <pre><code class="javascript">
+// apply example code will go here
+function greet(greeting, ending) {
+    return greeting + ", " + "John" + " " + this.surname + " " + ending;
+}
+
+console.log(greet.apply({ surname: "Doe" }, ["Hello", "goodbye"]));  // 10
+        </code></pre>
+        <button onclick="runApplyExample()">Show Result</button>
+        <div class="output" id="apply-output"></div>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script>
+        // JavaScript code for bind example
+        function runBindExample() {
+            function greet(greeting) {
+                return greeting + ", " + "John" + " " + this.surname;
+            }
+
+            const greet1 = greet.bind({ surname: "Doe" }, "Hello");
+
+            document.getElementById("bind-output").textContent = greet1(); // John Doe
+        }
+
+        // JavaScript code for call example
+        function runCallExample(greeting) {
+            function greet(greeting) {
+                return greeting + ", " + "John" + " " + this.surname;
+            }
+
+            const user = { surname: "Doe" };
+
+            document.getElementById("call-output").textContent = greet.call(user, "Hello"); // Hello, Jane
+        }
+
+        // JavaScript code for apply example
+        function runApplyExample() {
+            function greet(greeting, ending) {
+                return greeting + ", " + "John" + " " + this.surname + " " + ending;
+            }
+
+            document.getElementById("apply-output").textContent = greet.apply({ surname: "Doe" }, ["Hello", "goodbye"]); // Hello, John Doe goodbye
+        }
+    </script>
+</body>
+
+</html>
